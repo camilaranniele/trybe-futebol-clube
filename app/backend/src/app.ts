@@ -1,7 +1,10 @@
 import * as express from 'express';
+import LoginRouter from './routers/LoginRouter';
 
 class App {
   public app: express.Express;
+  public loginRouter = new LoginRouter();
+
   constructor() {
     this.app = express();
     this.config();
@@ -15,7 +18,9 @@ class App {
       next();
     };
 
+    this.app.use(express.json());
     this.app.use(accessControl);
+    this.loginRouter.route(this.app);
     // ... rotas
   }
 
