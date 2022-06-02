@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-// import { StatusCodes } from 'http-status-codes';
 import LoginService from '../services/Login.service';
 
 class LoginControler {
@@ -10,6 +9,18 @@ class LoginControler {
       const { email, password } = req.body;
       const user = await this._loginService.login(email, password);
       res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ message: 'Database problems' });
+    }
+  };
+
+  public returnUserRole = async (req: Request, res: Response) => {
+    try {
+      const { email } = req.body;
+      const user = await this._loginService.findUserByToken(email);
+      console.log(user);
+
+      res.status(200).send(user?.role as string);
     } catch (error) {
       res.status(500).json({ message: 'Database problems' });
     }
