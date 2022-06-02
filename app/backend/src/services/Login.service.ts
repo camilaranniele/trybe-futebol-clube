@@ -28,6 +28,11 @@ class LoginService {
       token,
     };
   }
+
+  public async findUserByToken(email: string) {
+    this.findUser = await User.findOne({ where: { email } });
+    return this.findUser;
+  }
 }
 
 export default LoginService;
