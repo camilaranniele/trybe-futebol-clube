@@ -16,7 +16,7 @@ class LoginService {
 
     if (!compareWithBcrypt) throw new Error('Incorrect password');
     const { id, username, role, email } = this.findUser;
-    const token = createToken(this.findUser);
+    const token = createToken({ username, role, email });
 
     return {
       user: {
