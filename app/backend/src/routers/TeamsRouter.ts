@@ -1,8 +1,14 @@
-import { Application } from "express";
+import { Application } from 'express';
+import TeamsController from '../controllers/Teams.controller';
 
 class TeamsRouter {
-  public route = (app: Application) => {
+  private _teamsController = new TeamsController();
 
+  public route = (app: Application) => {
+    app.get(
+      '/teams',
+      (req, res) => this._teamsController.getAllTeams(req, res),
+    );
   };
 }
 
