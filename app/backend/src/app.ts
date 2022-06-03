@@ -1,11 +1,13 @@
 import * as express from 'express';
 import LoginRouter from './routers/LoginRouter';
 import TeamsRouter from './routers/TeamsRouter';
+import MatchesRouter from './routers/MatchesRouter';
 
 class App {
   public app: express.Express;
   public loginRouter = new LoginRouter();
   public teamsRouter = new TeamsRouter();
+  public matchesRouter = new MatchesRouter();
 
   constructor() {
     this.app = express();
@@ -24,6 +26,7 @@ class App {
     this.app.use(accessControl);
     this.loginRouter.route(this.app);
     this.teamsRouter.route(this.app);
+    this.matchesRouter.route(this.app);
     // ... rotas
   }
 
