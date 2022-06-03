@@ -17,6 +17,7 @@ class TeamsController {
     const { id } = req.params;
     try {
       const team = await this._teamsService.getTeamById(Number(id));
+      if (!team) return res.status(404).json({ message: 'Team not found' });
       res.status(200).json(team);
     } catch (error) {
       res.status(500).json({ message: 'Database problems' });
