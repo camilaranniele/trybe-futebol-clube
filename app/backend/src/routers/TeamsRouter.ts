@@ -9,6 +9,11 @@ class TeamsRouter {
       '/teams',
       (req, res) => this._teamsController.getAllTeams(req, res),
     );
+
+    app.get(
+      '/teams/:id',
+      (req, res) => this._teamsController.getTeamById(req, res),
+    );
   };
 }
 
