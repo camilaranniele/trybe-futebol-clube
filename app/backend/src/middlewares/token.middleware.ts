@@ -14,7 +14,6 @@ type userData = {
 
 class tokenValidation {
   public validateWithUserExists = async (req: Request, res: Response, next: NextFunction) => {
-    // this.validateTokenIsValide(req, res, next);
     const token = req.headers.authorization;
     const decodedToken = decoderToken(String(token));
     if (!decodedToken) return res.status(401).json({ message: 'Expired or invalid token' });
