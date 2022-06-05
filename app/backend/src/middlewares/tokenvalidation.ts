@@ -7,7 +7,7 @@ const secret = fs.readFileSync('./jwt.evaluation.key', { encoding: 'utf-8' });
 const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const { authorization: token } = req.headers;
 
-  if (!token) {
+  if (!token || token === '') {
     return res.status(401).json({ message: 'Token not found' });
   }
   try {
