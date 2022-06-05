@@ -16,11 +16,9 @@ class LoginControler {
 
   public returnUserRole = async (req: Request, res: Response) => {
     try {
-      const { email } = req.body;
-      const user = await this._loginService.findUserByToken(email);
-      console.log(user);
+      const { role } = req.body.user;
 
-      res.status(200).send(user?.role as string);
+      res.status(200).send(role as string);
     } catch (error) {
       res.status(500).json({ message: 'Database problems' });
     }
