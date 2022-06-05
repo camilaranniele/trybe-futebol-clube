@@ -10,11 +10,11 @@ class LoginService {
     this.findUser = await User
       .findOne({ where: { email: useremail } });
 
-    if (!this.findUser) throw new Error('User not found');
+    if (!this.findUser) throw new Error('Incorrect email or password');
 
-    const compareWithBcrypt = Bcrypt.compare(password, this.findUser.password as string);
+    const compareWithBcrypt = await Bcrypt.compare(password, this.findUser.password as string);
 
-    if (!compareWithBcrypt) throw new Error('Incorrect password');
+    if (!compareWithBcrypt) throw new Error('Incorrect email or password');
     const { id, username, role, email } = this.findUser;
     const token = createToken({ username, role, email });
 
