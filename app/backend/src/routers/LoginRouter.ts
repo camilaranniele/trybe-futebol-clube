@@ -12,7 +12,7 @@ class LoginRouter {
   public route = (app: Application) => {
     app.post(
       '/login',
-      (req, res, next) => this.userValidation.validate(req, res, next, LoginSchema),
+      (req, res, next) => this.userValidation.validation(req, res, next, LoginSchema),
 
       (req, res) => this.loginController.login(req, res),
     );

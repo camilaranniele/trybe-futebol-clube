@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { Schema } from 'joi';
 
 class userValidation {
-  public validate = (req: Request, res: Response, next: NextFunction, schema: Schema) => {
+  public validation = (req: Request, res: Response, next: NextFunction, schema: Schema) => {
     const { error } = schema.validate(req.body);
 
     if (error) {
