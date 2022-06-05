@@ -1,4 +1,4 @@
-import * as Bcrypt from 'bcrypt';
+import * as Bcrypt from 'bcryptjs';
 import IUser from '../interfaces/IUser';
 import { createToken } from '../util/Token';
 import User from '../database/models/users';
