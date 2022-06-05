@@ -28,23 +28,16 @@ class MatcheService {
     return matches;
   };
 
-  // public async getAllMatches() {
-  //   this.matches = await Matches.findAll({
-  //     include: [
-  //       {
-  //         model: Teams,
-  //         as: 'teamHome',
-  //         attributes: { exclude: ['id'] },
-  //       },
-  //       {
-  //         model: Teams,
-  //         as: 'teamAway',
-  //         attributes: { exclude: ['id'] },
-  //       },
-  //     ],
-  //   });
-  //   return this.matches;
-  // }
+  public createMatch = async (payload: IMatches) => {
+    const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress } = payload;
+    const newMatch = await Matches.create({ homeTeam,
+      awayTeam,
+      homeTeamGoals,
+      awayTeamGoals,
+      inProgress });
+    console.log(newMatch);
+    return newMatch;
+  };
 }
 
 export default MatcheService;
