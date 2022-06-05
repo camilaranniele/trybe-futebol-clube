@@ -21,6 +21,11 @@ class MatchesController {
       res.status(500).json({ message: 'Database problems' });
     }
   };
+
+  public createMatch = async (req: Request, res: Response) => {
+    const newUser = await this._matchesService.createMatch(req.body);
+    res.status(201).json(newUser);
+  };
 }
 
 export default MatchesController;
