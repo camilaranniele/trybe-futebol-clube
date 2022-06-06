@@ -2,7 +2,7 @@ import Teams from '../database/models/teams';
 import ITeam from '../interfaces/ITeams';
 
 class TeamsService {
-  public teams: Array<ITeam[] | ITeam>;
+  public teams: Array<ITeam>;
   public team: ITeam | null;
 
   public async getAllTeams() {
