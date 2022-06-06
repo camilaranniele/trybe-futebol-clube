@@ -10,7 +10,8 @@ class LoginControler {
       const user = await this._loginService.login(email, password);
       res.status(200).json(user);
     } catch (error) {
-      res.status(500).json({ message: 'Database problems' });
+      const { message } = error as Error;
+      res.status(401).json({ message });
     }
   };
 
