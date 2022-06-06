@@ -10,6 +10,7 @@ const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   if (!token || token === '') {
     return res.status(401).json({ message: 'Token not found' });
   }
+
   try {
     verify(token, secret);
     next();
