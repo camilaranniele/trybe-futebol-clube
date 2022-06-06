@@ -30,12 +30,14 @@ class MatcheService {
 
   public createMatch = async (payload: IMatches) => {
     const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress } = payload;
+
+    if (inProgress === false) throw new Error('In Progress cannot be false');
+
     const newMatch = await Matches.create({ homeTeam,
       awayTeam,
       homeTeamGoals,
       awayTeamGoals,
       inProgress });
-    console.log(newMatch);
     return newMatch;
   };
 }
