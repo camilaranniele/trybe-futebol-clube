@@ -16,9 +16,12 @@ class matchesValidation {
   public validateIfTeamsExits = async (req: Request, res: Response, next: NextFunction) => {
     const { homeTeam, awayTeam } = req.body;
     const teams = await this._teamsService.getAllTeams();
-    const verifyWithExistsHomeTeam = teams.some((team) => team.id === Number(homeTeam));
-    const verifyWithExistsAwayTeam = teams.some((team) => team.id === Number(awayTeam));
-    if (!verifyWithExistsHomeTeam || !verifyWithExistsAwayTeam) {
+    console.log(homeTeam);
+    const verifyWithExistsHomeTeam = teams.some((team) => team.id === homeTeam);
+    const verifyWithExistsAwayTeam = teams.some((team) => team.id === awayTeam);
+    // console.log(verifyWithExistsHomeTeam, verifyWithExistsAwayTeam);
+
+    if (verifyWithExistsHomeTeam === false || verifyWithExistsAwayTeam === false) {
       return res.status(404).json({ message: 'There is no team with such id!' });
     }
     next();
