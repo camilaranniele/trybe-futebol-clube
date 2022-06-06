@@ -4,6 +4,7 @@ import IMatches from '../interfaces/IMatches';
 
 class MatcheService {
   public matches: Array<IMatches[] | IMatches>;
+  private _inProgress: boolean;
   private _query = {
     where: {},
     include: [
@@ -29,15 +30,16 @@ class MatcheService {
   };
 
   public createMatch = async (payload: IMatches) => {
-    const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress } = payload;
-    if (typeof inProgress === 'string') throw new Error('In Progress is a boolean');
-    if (inProgress === false) throw new Error('In Progress cannot be false');
+    this._inProgress = true;
+    const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals } = payload;
+    // if (typeof inProgress === 'string') throw new Error('In Progress is a boolean');
+    // if (inProgress === false) throw new Error('In Progress cannot be false');
 
     const newMatch = await Matches.create({ homeTeam,
       awayTeam,
       homeTeamGoals,
       awayTeamGoals,
-      inProgress });
+      inProgress: this._inProgress });
     return newMatch;
   };
 
