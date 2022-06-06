@@ -40,6 +40,13 @@ class MatcheService {
       inProgress });
     return newMatch;
   };
+
+  public finishMatch = async (id: number) => {
+    await Matches.update(
+      { inProgress: false },
+      { where: { id } },
+    );
+  };
 }
 
 export default MatcheService;
