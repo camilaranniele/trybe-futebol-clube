@@ -15,6 +15,10 @@ class MatchesRouter {
       (req, res, next) => TokenValidation(req, res, next),
       (req, res) => this._matchesController.createMatch(req, res),
     );
+    app.patch(
+      '/matches/:id/finish',
+      (req, res) => this._matchesController.finishMatch(req, res),
+    );
   };
 }
 
