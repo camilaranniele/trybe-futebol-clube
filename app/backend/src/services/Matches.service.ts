@@ -30,7 +30,7 @@ class MatcheService {
 
   public createMatch = async (payload: IMatches) => {
     const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress } = payload;
-
+    if (typeof inProgress === 'string') throw new Error('In Progress is a boolean');
     if (inProgress === false) throw new Error('In Progress cannot be false');
 
     const newMatch = await Matches.create({ homeTeam,
