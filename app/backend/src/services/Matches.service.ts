@@ -49,6 +49,13 @@ class MatcheService {
       { where: { id } },
     );
   };
+
+  public updateMatch = async (id: number, homeGoals: number, awayGoals: number) => {
+    await Matches.update(
+      { homeTeamGoals: homeGoals, awayTeamGoals: awayGoals },
+      { where: { id } },
+    );
+  };
 }
 
 export default MatcheService;

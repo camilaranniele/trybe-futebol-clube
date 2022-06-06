@@ -23,6 +23,10 @@ class MatchesRouter {
       '/matches/:id/finish',
       (req, res) => this._matchesController.finishMatch(req, res),
     );
+    app.patch(
+      '/matches/:id',
+      (req, res) => this._matchesController.updateMatch(req, res),
+    );
   };
 }
 
