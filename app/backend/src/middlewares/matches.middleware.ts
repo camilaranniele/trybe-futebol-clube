@@ -19,7 +19,6 @@ class matchesValidation {
     console.log(homeTeam);
     const verifyWithExistsHomeTeam = teams.some((team) => team.id === homeTeam);
     const verifyWithExistsAwayTeam = teams.some((team) => team.id === awayTeam);
-    // console.log(verifyWithExistsHomeTeam, verifyWithExistsAwayTeam);
 
     if (verifyWithExistsHomeTeam === false || verifyWithExistsAwayTeam === false) {
       return res.status(404).json({ message: 'There is no team with such id!' });
