@@ -10,7 +10,7 @@ class userValidation {
       if (error.details[0].type === 'string.email') {
         return res.status(StatusCodes.UNAUTHORIZED).json({ message: error.details[0].message });
       }
-      return res.status(StatusCodes.BAD_REQUEST).json({ message: error.details[0].message });
+      return res.status(StatusCodes.UNAUTHORIZED).json({ message: error.details[0].message });
     }
     next();
   };
